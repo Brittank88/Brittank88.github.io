@@ -1,0 +1,1 @@
+window.location.replace("construction/construction.html");
