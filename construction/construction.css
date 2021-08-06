@@ -1,7 +1,11 @@
 body, html {
     color: white;
-    image-rendering: pixelated;
     text-align: center;
+}
+
+.pixelated {
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
 }
 
 .center {
