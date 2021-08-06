@@ -5,6 +5,7 @@ body, html {
 
 .pixelated {
     image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
     -ms-interpolation-mode: nearest-neighbor;
 }
 
