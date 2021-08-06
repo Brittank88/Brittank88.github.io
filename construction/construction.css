@@ -17,9 +17,9 @@ body, html {
     transform: translate(-50%, -50%);
 }
 
-.bg-image {
+#bg-image {
     /* The image used */
-    background-image: url('../../assets/img/construction/bg.png');
+    background-image: url('../../assets/construction/img/bg.png');
   
     /* Add the blur effect */
     filter: blur(60px) brightness(70%);
@@ -42,22 +42,9 @@ body, html {
 }
 
 #splash-container {
-    background-image: url('../../assets/img/construction/win98.png');
+    background-image: url('../../assets/construction/img/win98.png');
     background-size: 100% 100%;
     padding: 50px 25px 25px 25px;
-}
-
-@keyframes MoveUpDown {
-    0%, 100% { transform: none; }
-    50%      { transform: translate(0px, -8px); }
-}
-
-#splash-claw {
-    position: inherit;
-    margin-left: 107px;
-    margin-top: 38px;
-    animation: MoveUpDown 5s linear infinite;
-    z-index: -1;
 }
 
 @keyframes LoadingBar {
