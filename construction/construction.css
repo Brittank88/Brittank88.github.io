@@ -19,7 +19,7 @@ body, html {
 
 #bg-image {
     /* The image used */
-    background-image: url('../../assets/construction/img/bg.png');
+    background-image: url('../assets/image/construction/bg.png');
   
     /* Add the blur effect */
     filter: blur(60px) brightness(70%);
@@ -42,7 +42,7 @@ body, html {
 }
 
 #splash-container {
-    background-image: url('../../assets/construction/img/win98.png');
+    background-image: url('../assets/image/construction/win98.png');
     background-size: 100% 100%;
     padding: 50px 25px 25px 25px;
 }
