@@ -1,0 +1,91 @@
+:root {
+    --mdc-card-header-height: 40px;
+    --mdc-card-header-pad-bottom: 20px;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0 0 0 0;
+
+    --mdc-theme-background: #23272A;
+    --mdc-theme-typography: #FFF
+}
+
+.mdc-card {
+    padding: 16px;
+
+    --mdc-theme-surface: #2C2F33;
+    --mdc-theme-primary: #FFF
+
+    height: 40vh;
+    height: calc(50vh - var(--mdc-card-header-height, 40px) - var(--mdc-card-header-pad-bottom, 20px));
+}
+
+.mdc-card__title,
+.mdc-card__subtitle {
+    font-size: 12px;
+    line-height: 5px;
+}
+
+.mdc-card__subtitle {
+    color: #707070;
+}
+
+.mdc-card__header {
+    align-items: center;
+    display: flex;
+
+    height: 40px;
+    height: var(--mdc-card-header-height, 40px);
+
+    padding: 0 0 20px;
+    padding: 0 0 var(--mdc-card-header-pad-bottom, 20px);
+}
+
+.mdc-card__avatar {
+    background: #bdbdbd;
+    height: 40px;
+    width: 40px;
+    margin-right: 12px;
+    border-radius: 50%;
+}
+
+.mdc-card__supporting-text {
+    font-size: 10px;
+}
+
+.mdc-card--with-avatar .mdc-card__title,
+.mdc-card--with-avatar .mdc-card__subtitle {
+    margin-left: 56px;
+}
+
+.mdc-card__actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 16px 16px 16px;
+}
+
+.mdc-card__media {
+    /* Utilise as much space as we can within the card here. */
+    height: 100%;
+
+    overflow: hidden scroll;
+    padding: 0
+}
+
+.mdc-text-field {
+    caret-color: #FFF;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+    border-color: #FFF !important;
+    border-color: var(--mdc-theme-primary, #FFF) !important;
+}
+
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: #FFF !important;
+    color: var(--mdc-theme-primary, #FFF) !important;
+}

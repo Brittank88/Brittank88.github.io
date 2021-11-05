@@ -1,0 +1,144 @@
+<!doctype html>
+<head>
+    <!--
+        This is the landing page for my website.
+    -->
+
+    <!-- Primary Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Construct</title>
+    <meta name="title" content="Quantum Construct">
+    <meta name="description" content="A combined calculator/ruleset/storyline resource for FIT2073 Assignment 3!">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="quantum_construct.css">
+
+    <!-- Scripts -->
+    <script src="quantum_construct.js" defer></script>
+
+    <!-- Material Components Web -->
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.css">
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://unpkg.com/jquery@latest/dist/jquery.min.js"></script>
+
+    <!-- Perfect Scrollbar -->
+    <link rel="stylesheet" href="https://unpkg.com/perfect-scrollbar@latest/css/perfect-scrollbar.css">
+    <script src="https://unpkg.com/perfect-scrollbar@latest/dist/perfect-scrollbar.min.js"></script>
+
+</head>
+<body class="mdc-theme--background mdc-typography mdc-theme--on-primary">
+    <div class="mdc-layout-grid">
+        <div class="mdc-layout-grid__inner">
+
+            <!-- Rules -->
+            <div class="mdc-layout-grid__cell--span-6">
+                <div class="mdc-card">
+                    <section class="mdc-card__header">
+                        <div class="mdc-card__avatar"></div>
+                        <div>
+                            <p class="mdc-card__title">Game Outline</p>
+                            <p class="mdc-card__subtitle">How to play the game!</p>
+                        </div>
+                    </section>
+                    <section class="mdc-card__media">
+                        <p>
+                            <strong>Players:</strong>
+                            <br><br>
+                            Singleplayer.
+                        </p>
+                        <p>
+                            <strong>Materials:</strong>
+                            <ul>
+                                <li>[<strong>12x</strong>] Enemy tokens</li>
+                                <li>[<strong>12x</strong>] Weapon tokens</li>
+                                <li>[<strong>28x</strong>] Room Variations</li>
+                                <li>[<strong>01x</strong>] Room Block</li>
+                                <li>[<strong>01x</strong>] Player token</li>
+                                <li>[<strong>01x</strong>] Doorway</li>
+                            </ul>
+                        </p>
+                        <p>
+                            <strong>Goal:</strong>
+                            <br><br>
+                            Fight through rooms of enemies in order to collect more room pieces, building your way out of a pit whilst amassing an arsenal of powerful weapons!
+                            <br><br>
+                            Beating the game involves the player finding four key items unique to each room type in order to create their exit in special waypoint rooms!
+                        </p>
+                        <p>
+                            <strong>Setup:</strong>
+                            <br><br>
+                            There are two game boards a player can interact with.
+                            <br><br>
+                            The physical location of a player begins on the room-board in a single room, facing a single enemy.
+                            <br><br>
+                            Within the room is one weapon, as well as one room piece in which can be picked up.
+                            <br><br>
+                            Alternatively, there is a game board called the pit-board which appears like a Tetris playing field; it has room blocks rather than the room variations placed on it, starting with the one the player is within initially.
+                        </p>
+                        <p>
+                            <strong>Rules:</strong>
+                            <ul>
+                                <li>The player begins with 100 HP, 15 attack damage and no weapon.</li>
+                                <li>There are three particular phases a player can be in: movement, combat, and stacking.
+                                    <ul>
+                                        <li>
+                                            <strong>Movement:</strong>
+                                            <br><br>
+                                            The player starts off with moving around the rooms, and can freely choose to move up to six spaces during their turn. Enemies will move after the player has completed their movement; when either makes contact with the other during anyone’s turn, combat will initiate. Furthermore, simply stepping over a room piece or obtainable item/weapon will immediately pick it up for the player.
+                                        </li>
+                                        <li>
+                                            <strong>Combat:</strong>
+                                            <br><br>
+                                            The player can attack enemies with whatever weapons they have on hand, including bare fists. Players are also able to regain hp back from an enemy by deconstruction kills:
+                                            <br><br>
+                                            <ul>
+                                                <li>A deconstruction can be done when an enemy is at 35% max hp.</li>
+                                                <li>At 26% to 50% max player hp, a deconstruction restores 20% max hp.</li>
+                                                <li>At 25% and under, healing ramps up to 40% of your max hp.</li>
+                                            </ul>
+                                            <br>
+                                            Combat ends when either the player or the enemy is defeated, and movement can be done once again. However, when a piece is picked up at any time where there are no enemies remaining, the player will move on to the stacking phase.
+                                        </li>
+                                        <li>
+                                            <strong>Stacking:</strong>
+                                            <br><br>
+                                            The player will interact with the pit-board and can place a room block anywhere directly around the room they are currently occupying. Once this is completed, the player can create a doorway from their current room to whichever wall has another room next to it, in order for the player to move to said room next.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </p>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Calculator -->
+            <div class="mdc-layout-grid__cell--span-6">
+                <div class="mdc-card">
+                    <section class="mdc-card__header">
+                        <div class="mdc-card__avatar"></div>
+                        <div>
+                            <p class="mdc-card__title">Calculator</p>
+                            <p class="mdc-card__subtitle">Easily determine the next game values!</p>
+                        </div>
+                    </section>
+                    <section class="mdc-card__media">
+                        <label class="mdc-text-field mdc-text-field--outlined" id="stack-width-tf">
+                            <span class="mdc-notched-outline">
+                                <span class="mdc-notched-outline__leading"></span>
+                                <span class="mdc-notched-outline__notch">
+                                    <span class="mdc-floating-label" id="stack-width-tf-label">Stat 1</span>
+                                </span>
+                                <span class="mdc-notched-outline__trailing"></span>
+                            </span>
+                            <input type="text" class="mdc-text-field__input" aria-labelledby="stack-width-tf-label">
+                        </label>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
