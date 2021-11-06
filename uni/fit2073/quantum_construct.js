@@ -83,10 +83,22 @@ function updateWeaponTable(stackWidth = 1, stackHeight = 1) {
             weaponStats = enums.weaponStats[weaponType];
 
         // Rarity.
-        $(cols[4][i]).text(
-            helper_funcs.intToRomanNumerals(
-                weaponStats.maxRarityUponDiscovery + balance_funcs.calculateItemExtraRarity(stackWidth, stackHeight)
-            )
-        );
+
+        let rarity = weaponStats.maxRarityUponDiscovery + balance_funcs.calculateItemExtraRarity(stackWidth, stackHeight);
+
+        $(cols[4][i]).text(helper_funcs.intToRomanNumerals(rarity));
+
+        let rarityStatIncreasePercent = balance_funcs.calculateItemRarityStatIncreasePercentage(rarity);
+
+        // Damage.
+
+        let damageBounds = weaponStats.maxDamage === null ?
+        [''] :
+        [
+            weaponStats.maxDamage,
+            Math.ceil(balance_funcs.applyStatIncreasePercentage(weaponStats.maxDamage, rarityStatIncreasePercent))
+        ]
+
+        $(cols[2][i]).text(damageBounds.map(d => `${d}` + weaponStats.maxDamageExtraStr).join(' - '));
     }
 }

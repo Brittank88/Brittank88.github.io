@@ -91,7 +91,9 @@ function calculateItemExtraRarity(stackWidth, stackHeight, hDilation = 0.09) {
     if (!Number.isInteger(stackHeight)) throw new TypeError('stackHeight must be an integer!');
     if (stackHeight < 1) throw new RangeError('stackHeight must be positive!')
 
-    return stackWidth * stackHeight === 1 ? 0 : Math.floor(stackWidth * stackHeight * hDilation + stackWidth * hDilation + 1);
+    let stackDimProduct = stackWidth * stackHeight;
+
+    return Math.floor(stackDimProduct * hDilation + stackWidth * hDilation + stackDimProduct !== 1);
 }
 
 /**
