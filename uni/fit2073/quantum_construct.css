@@ -85,7 +85,8 @@ html, body {
     border-color: var(--theme-greyple) !important;
 }
 
-.mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mdc-text-field:not(.mdc-text-field--disabled) .mdc-text-field__input {
     color: var(--theme-full-white) !important;
 }
 
@@ -131,4 +132,17 @@ html, body {
 
 .md-icon {
     font-family: 'Material Icons' !important;
+}
+
+.alignmentTable {
+    border-collapse: collapse;
+}
+
+.alignmentTable th {
+    padding: 0; 
+    margin: 0;
+}
+
+#calc-grid-inner {
+    text-align: center;
 }
