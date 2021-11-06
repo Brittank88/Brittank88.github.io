@@ -85,13 +85,13 @@ function calculateEnemiesPerCell(stackHeight, vDilation = 1, hDilation = 6.6) {
  * @param {number} hDilation
  * @returns {number}
  */
-function calculateItemRarity(stackWidth, stackHeight, hDilation = 0.09) {
+function calculateItemExtraRarity(stackWidth, stackHeight, hDilation = 0.09) {
     if (!Number.isInteger(stackWidth)) throw new TypeError('stackWidth must be an integer!');
     if (stackWidth < 1) throw new RangeError('stackWidth must be positive!')
     if (!Number.isInteger(stackHeight)) throw new TypeError('stackHeight must be an integer!');
     if (stackHeight < 1) throw new RangeError('stackHeight must be positive!')
 
-    return Math.floor(stackWidth * stackHeight * hDilation + stackWidth * hDilation + 1);
+    return stackWidth * stackHeight === 1 ? 0 : Math.floor(stackWidth * stackHeight * hDilation + stackWidth * hDilation + 1);
 }
 
 /**
@@ -140,6 +140,6 @@ function calculateKeyItemSpawnChance(roomTypeVisitCount) {
 
 export {
     calculateEnemyHealthExtraRange, calculateEnemyDamageExtraRange, calculateEnemiesPerCell,
-    calculateItemRarity, calculateItemRarityStatIncreasePercentage, applyStatIncreasePercentage,
+    calculateItemExtraRarity, calculateItemRarityStatIncreasePercentage, applyStatIncreasePercentage,
     calculateKeyItemSpawnChance
 };

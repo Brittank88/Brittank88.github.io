@@ -32,54 +32,61 @@ $(document).ready(function() {
 });
 
 function updateData() {
-    let stackWidth = numOfInputElement($('input[aria-labelledby=stack-width-tf-label]'));
-    let stackHeight = numOfInputElement($('input[aria-labelledby=stack-height-tf-label]'));
+    let [
+        stackWidth, stackHeight
+    ] = [
+        ...['width', 'height'].map(s => helper_funcs.numOfInputElement($(`input[aria-labelledby=stack-${s}-tf-label]`)))
+    ];
 
     updateEnemyTable(stackHeight === null ? 1 : stackHeight);
-    //updateWeaponTable(stackWidth === null ? 1 : stackWidth, stackHeight === null ? 1 : stackHeight)
+    updateWeaponTable(stackWidth === null ? 1 : stackWidth, stackHeight === null ? 1 : stackHeight)
 }
 
 function updateEnemyTable(stackHeight = 1) {
-    let cols = window['dt__enemy-stats__attachment'].getCols();
 
-    for (let i = 0; i < window['dt__enemy-stats__attachment'].getRows().length; i++) {
-        let cellOfFirstCol = $(cols[0][i]);
+    let enemyStatsDT = window['dt__enemy-stats__attachment'],
+        cols = enemyStatsDT.getCols();
+
+    for (let i = 0; i < enemyStatsDT.getRows().length; i++) {
+
+        let enemyStats = enums.enemyStats[enums.stringToEnemyType[$(cols[0][i]).text()]];
 
         // Health
         let extraHealth = [...new Set(
-            calculateEnemyHealthExtraRange(stackHeight)
-            .map(v => enemyStats[stringToEnemyType[cellOfFirstCol.text()]].maxHealth + v)
+            balance_funcs.calculateEnemyHealthExtraRange(stackHeight)
+            .map(v => enemyStats.maxHealth + v)
         )];
 
         $(cols[2][i]).text(extraHealth.join(' - '));
 
         // Damage
         let extraDamage = [...new Set(
-            calculateEnemyDamageExtraRange(stackHeight)
-            .map(v => enemyStats[stringToEnemyType[cellOfFirstCol.text()]].maxDamage + v)
+            balance_funcs.calculateEnemyDamageExtraRange(stackHeight)
+            .map(v => enemyStats.maxDamage + v)
         )];
 
         $(cols[3][i]).text(extraDamage.join(' - '));
 
         // Per Cell
-        $(cols[4][i]).text(calculateEnemiesPerCell(stackHeight));
+        $(cols[4][i]).text(balance_funcs.calculateEnemiesPerCell(stackHeight));
     }
 }
 
 function updateWeaponTable(stackWidth = 1, stackHeight = 1) {
-    let cols = window['dt__weapon-stats__attachment'].getCols();
 
-    for (let i = 0; i < window['dt__weapon-stats__attachment'].getRows().length; i++) {
-        let cellOfCol4 = $(cols[4][i]),
-            cellOfCol4Text = cellOfCol4.text();
+    let weaponStatsDT = window['dt__weapon-stats__attachment'],
+        cols = weaponStatsDT.getCols();
+
+    for (let i = 0; i < weaponStatsDT.getRows().length; i++) {
+
+        let weaponType = enums.stringToWeaponType[$(cols[0][i]).text()],
+            weaponStats = enums.weaponStats[weaponType];
 
         // Rarity.
-        let rarity = calculateItemRarity(stackWidth, stackHeight);
-
-        cellOfCol4.text(
-            intToRomanNumerals(rarity) === cellOfCol4Text ?
-            intToRomanNumerals(romanNumeralsToInt(cellOfCol4Text) + rarity) :
-            cellOfCol4Text
+        $(cols[4][i]).text(
+            helper_funcs.intToRomanNumerals(
+                weaponStats.maxRarityUponDiscovery + balance_funcs.calculateItemExtraRarity(stackWidth, stackHeight)
+            )
         );
     }
 }
