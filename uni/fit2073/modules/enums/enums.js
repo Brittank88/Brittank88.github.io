@@ -235,7 +235,7 @@ const weaponStats = {
         maxDamage: null,
         maxDamageExtraStr: '50%',
         maxRange: null,
-        maxRangeExtraStr: '&#xeb3d;',
+        maxRangeExtraStr: '\u{eb3d}',
         maxRarityUponDiscovery: 5
     }
 }

@@ -1,3 +1,5 @@
+import { SINGLE_CELL_SIDE_LENGTH } from '../consts/consts.js';
+
 /**
  * Uses calculateEnemyStatExtraRangeGeneral to calculate the minimum and maximum bounds for the enemy's health.
  * 
@@ -72,7 +74,7 @@ function calculateEnemiesPerCell(stackHeight, vDilation = 1, hDilation = 6.6) {
     if (!Number.isInteger(stackHeight)) throw new TypeError('stackHeight must be an integer!');
     if (stackHeight < 1) throw new RangeError('stackHeight must be positive!')
 
-    return Math.floor(hDilation * Math.log10(vDilation * stackHeight) + 1);
+    return Math.min(Math.floor(hDilation * Math.log10(vDilation * stackHeight) + 1), SINGLE_CELL_SIDE_LENGTH ** 2);
 }
 
 /**

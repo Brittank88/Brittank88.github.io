@@ -28,7 +28,10 @@ $(document).ready(function() {
     let stackWidthOnInputFn = $('input[aria-labelledby=stack-width-tf-label]')[0].oninput;
     $('input[aria-labelledby=stack-width-tf-label]')[0].oninput = function(event) { stackWidthOnInputFn(event); updateData(); };
     let stackHeightOnInputFn = $('input[aria-labelledby=stack-height-tf-label]')[0].oninput;
-    $('input[aria-labelledby=stack-height-tf-label]')[0].oninput = function(event) { stackHeightOnInputFn(event); updateData(); };  
+    $('input[aria-labelledby=stack-height-tf-label]')[0].oninput = function(event) { stackHeightOnInputFn(event); updateData(); };
+
+    // Update tables, just in case.
+    updateData();
 });
 
 function updateData() {
