@@ -88,17 +88,26 @@ function updateWeaponTable(stackWidth = 1, stackHeight = 1) {
 
         $(cols[4][i]).text(helper_funcs.intToRomanNumerals(rarity));
 
-        let rarityStatIncreasePercent = balance_funcs.calculateItemRarityStatIncreasePercentage(rarity);
+        // Helper function for calculating damage/range strings.
+        let statIncreasePercent = balance_funcs.calculateItemRarityStatIncreasePercentage(rarity);
+        const generateStatString = (stat, statExtraStr) => {
+            return (stat === null ?
+                [''] :
+                [
+                    stat,
+                    Math.ceil(balance_funcs.applyStatIncreasePercentage(stat, statIncreasePercent))
+                ]
+            ).map(d => `${d}` + statExtraStr).join(' - ')
+        };
 
         // Damage.
+        $(cols[2][i]).text(
+            generateStatString(weaponStats.maxDamage, weaponStats.maxDamageExtraStr)
+        );
 
-        let damageBounds = weaponStats.maxDamage === null ?
-        [''] :
-        [
-            weaponStats.maxDamage,
-            Math.ceil(balance_funcs.applyStatIncreasePercentage(weaponStats.maxDamage, rarityStatIncreasePercent))
-        ]
-
-        $(cols[2][i]).text(damageBounds.map(d => `${d}` + weaponStats.maxDamageExtraStr).join(' - '));
+        // Range.
+        $(cols[3][i]).text(
+            generateStatString(weaponStats.maxRange, weaponStats.maxRangeExtraStr)
+        );
     }
 }

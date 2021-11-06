@@ -234,8 +234,8 @@ const weaponStats = {
         name: 'Laser Pistol',
         maxDamage: null,
         maxDamageExtraStr: '50%',
-        maxRange: Number.POSITIVE_INFINITY,
-        maxRangeExtraStr: '',
+        maxRange: null,
+        maxRangeExtraStr: '&#xeb3d;',
         maxRarityUponDiscovery: 5
     }
 }
